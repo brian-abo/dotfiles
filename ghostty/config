@@ -1,0 +1,5 @@
+font-family = "JetBrains Mono"
+theme = catppuccin-mocha
+background-opacity = 0.8
+background-blur = true
+font-size = 19
