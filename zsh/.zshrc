@@ -15,7 +15,7 @@ compinit
 export EDITOR=/opt/homebrew/bin/nvim
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export STARSHIP_CONFIG="/.config/starship/starship.toml"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
