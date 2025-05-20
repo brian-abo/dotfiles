@@ -1,0 +1,4 @@
+alias k=kubectl
+alias watch="watch "
+alias history="history 0"
+

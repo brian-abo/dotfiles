@@ -3,3 +3,5 @@ theme = catppuccin-mocha
 background-opacity = 0.8
 background-blur = true
 font-size = 19
+
+keybind = global:alt+q=toggle_quick_terminal
