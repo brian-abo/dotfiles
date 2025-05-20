@@ -1,3 +1,63 @@
-mytest() {
-  echo "test"
+# Remove all untracked files and directories (excluding .gitignored files)
+gclean() {
+  git clean -fdX "$@"
 }
+
+# Hard reset: discard all uncommitted changes (staged & unstaged)
+ghard() {
+  echo "⚠️  This will discard all local changes and reset to HEAD."
+  read -q "?Proceed? [y/N] " && echo && git reset --hard HEAD
+}
+
+# Undo the last local commit, preserving changes in working directory
+gundo() {
+  git reset --soft HEAD~1
+}
+
+# Delete all fully merged branches except main/master
+gprune() {
+  git branch --merged | grep -vE '^\*|main|master' | xargs git branch -d
+}
+
+# Fetch and check out a GitHub pull request by number
+gpr() {
+  local pr="$1"
+  local remote="${2:-origin}"
+
+  if [[ -z "$pr" ]]; then
+    echo "Usage: gpr <pr-number> [remote=origin]"
+    return 1
+  fi
+
+  echo "🔄 Fetching PR #$pr from $remote..."
+  git fetch "$remote" "pull/$pr/head:pr-$pr" && git checkout "pr-$pr"
+}
+
+# Switch Kubernetes context
+kctx() {
+  kubectl config use-context "$1"
+}
+
+# Set current Kubernetes namespace in active context
+kns() {
+  kubectl config set-context --current --namespace="$1"
+}
+
+# Stream logs from all pods labeled app=<name>, optionally in a given namespace
+klogf() {
+  local name="$1"
+  local namespace="$2"
+
+  if [[ -z "$name" ]]; then
+    echo "Usage: klogf <name> [namespace]"
+    return 1
+  fi
+
+  # Only add -n if namespace is explicitly provided
+  local ns_args=()
+  [[ -n "$namespace" ]] && ns_args=(-n "$namespace")
+
+  echo "📄 Streaming logs for pods with label app=$name ${namespace:+in namespace $namespace}..."
+  kubectl logs -f -l "app=$name" --all-containers=true "${ns_args[@]}"
+}
+
