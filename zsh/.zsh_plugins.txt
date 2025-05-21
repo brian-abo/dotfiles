@@ -1,7 +1,7 @@
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-syntax-highlighting
 jeffreytse/zsh-vi-mode
-agkozak/zsh-z
 zsh-users/zsh-completions
 z-shell/zsh-eza
 z-shell/H-S-MW
+z-shell/zsh-zoxide
