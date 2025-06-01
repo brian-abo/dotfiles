@@ -11,8 +11,8 @@ jobs:
       run:
         shell: zsh {0}
     env:
-      ZDOTDIR: $HOME/.config/zsh
-      XDG_CONFIG_HOME: $HOME/.config
+      ZDOTDIR: ${HOME}/.config/zsh
+      XDG_CONFIG_HOME: ${HOME}/.config
     steps:
       - name: Confirm Zsh
         run: |
@@ -25,7 +25,8 @@ jobs:
           echo "SHELL = $SHELL"
           echo "ZDOTDIR = $ZDOTDIR"
           echo "XDG_CONFIG_HOME = $XDG_CONFIG_HOME"
-          mv /Users/runner/work/dotfiles/dotfiles $HOME
+          mv "$GITHUB_WORKSPACE/dotfiles" "$HOME"
+          # mv /Users/runner/work/dotfiles/dotfiles $HOME
           cd $HOME/dotfiles
       - name: Run full bootstrap
         working-directory: /Users/runner/dotfiles
