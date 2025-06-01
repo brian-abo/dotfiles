@@ -17,9 +17,9 @@ jobs:
           cd $HOME/dotfiles
           ls -al
       - name: Run full bootstrap
-        working-directory: $HOME/dotfiles
+        working-directory: /Users/runner/dotfiles
         run: |
-          ls /Users/runner/dotfiles
+          ls -al
           make init
       - name: Validate core symlinks
         run: |
