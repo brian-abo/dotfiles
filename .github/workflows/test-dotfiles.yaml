@@ -11,8 +11,8 @@ jobs:
       run:
         shell: zsh {0}
     env:
-      ZDOTDIR: ${{ env.HOME }}/.config/zsh
-      XDG_CONFIG_HOME: ${{ env.HOME }}/.config
+      ZDOTDIR: $HOME/.config/zsh
+      XDG_CONFIG_HOME: $HOME/.config
     steps:
       - name: Confirm Zsh
         run: |
