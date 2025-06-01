@@ -1,10 +1,10 @@
 .PHONY: init update merge-config stow install-brew sesh nvim-setup help
 
 # Ensure installation of Homebrew, links configuration, and sources .zshrc
-init: install-brew
+init: install-brew stow
 	@brew bundle --file $(HOME)/dotfiles/homebrew/Brewfile
 	@echo "To apply shell changes, run:"
-	@echo "source $(XDG_CONFIG_HOME)/zsh/.zshrc"
+	@echo "source $($HOME)/.config/zsh/.zshrc"
 
 # Generate configs and restow
 update: merge-config stow
@@ -13,7 +13,7 @@ update: merge-config stow
 # Merge all session configs before stowing
 merge-config: sesh
 
-# Runs the 
+# Runs Stow to setup symlinks to the .config folder
 stow:
 	@echo "Stowing dotfiles..."
 	@stow .

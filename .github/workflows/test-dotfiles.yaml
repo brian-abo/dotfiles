@@ -17,6 +17,7 @@ jobs:
         working-directory: /Users/runner/dotfiles
         run: |
           make init
+          source $HOME/.config/zsh/.zshrc
       - name: Validate core symlinks
         run: |
           test -L "$HOME/.zshrc" || (echo "Missing .zshrc symlink" && exit 1)
