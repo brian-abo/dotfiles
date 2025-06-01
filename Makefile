@@ -3,9 +3,9 @@
 # Ensure installation of Homebrew, links configuration, and sources .zshrc
 init: install-brew
 	@brew bundle --file $(HOME)/dotfiles/homebrew/Brewfile
+	@stow .
 	@echo "To apply shell changes, run:"
 	@echo "source $($HOME)/.config/zsh/.zshrc"
-	@stow .
 
 # Generate configs and restow
 update: merge-config stow
