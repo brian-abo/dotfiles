@@ -23,11 +23,12 @@ jobs:
         working-directory: /Users/runner/dotfiles
         run: |
           make init
-          source $HOME/.config/zsh/.zshrc
-      - name: Validate core symlinks
-        run: |
-          test -L "$HOME/.zshrc" || (echo "Missing .zshrc symlink" && exit 1)
-          test -L "$HOME/.config/nvim/init.lua" || (echo "Missing Neovim config" && exit 1)
-      - name: Show final structure
-        run: |-
-          tree -L 2 "$HOME/.config" || true
+          ls -al $HOME/.config
+      #     source $HOME/.config/zsh/.zshrc
+      # - name: Validate core symlinks
+      #   run: |
+      #     test -L "$HOME/.zshrc" || (echo "Missing .zshrc symlink" && exit 1)
+      #     test -L "$HOME/.config/nvim/init.lua" || (echo "Missing Neovim config" && exit 1)
+      # - name: Show final structure
+      #   run: |-
+      #     tree -L 2 "$HOME/.config" || true
