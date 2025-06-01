@@ -1,4 +1,4 @@
-.PHONY: init update merge-config stow install-brew sesh nvim-setup help
+.PHONY: init update merge-config stow install-brew brew-backup sesh nvim-setup help
 
 # Ensure installation of Homebrew, links configuration, and sources .zshrc
 init: install-brew
@@ -32,6 +32,10 @@ install-brew:
 brew-install:
 	@brew bundle
 
+# Writes out all brew installed software to a Brewfile
+brew-backup:
+	brew bundle dump --force --describe
+
 # Generate merged sesh config
 sesh:
 	@echo "Regenerating sesh config..."
@@ -42,11 +46,14 @@ nvim-setup:
 	@echo "Configure Python for Neovim"
 	@$(HOME)/dotfiles/scripts/bootstrap_neovim_python.sh
 
+# Just the help command
 help:
 	@echo "Available commands:"
 	@echo "  make init         # Install Homebrew, stow dotfiles, and prompt for zsh reload"
 	@echo "  make update       # Merge configs and restow"
 	@echo "  make sesh         # Regenerate sesh config"
+	@echo "  make stow         # Runs Stow . to symlink all configuration"
 	@echo "  make nvim-setup   # Configure Python support for Neovim"
 	@echo "  make brew-install # Run Homebrew bundle install"
+	@echo "  make brew-backup  # Run Homebrew bundle dump to create a backup"
 

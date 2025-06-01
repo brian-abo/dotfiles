@@ -4,7 +4,7 @@ set -euo pipefail
 CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 CORE="$HOME/dotfiles/sesh/config.core.toml"
 LOCAL="$HOME/dotfiles/sesh/config.local.toml"
-MERGED="$CONFIG_HOME/sesh/config.toml"
+MERGED="$CONFIG_HOME/sesh/sesh.toml"
 
 mkdir -p "$(dirname "$MERGED")"
 

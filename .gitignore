@@ -2,3 +2,4 @@
 tmux/plugins
 zsh/.zcompdump
 zsh/.zsh_plugins.zsh
+sesh/sesh.toml
