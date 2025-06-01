@@ -25,7 +25,7 @@ jobs:
           echo "SHELL = $SHELL"
           echo "ZDOTDIR = $ZDOTDIR"
           echo "XDG_CONFIG_HOME = $XDG_CONFIG_HOME"
-          mv "$GITHUB_WORKSPACE/dotfiles" "$HOME"
+          mv "$GITHUB_WORKSPACE" "$HOME"
           # mv /Users/runner/work/dotfiles/dotfiles $HOME
           cd $HOME/dotfiles
       - name: Run full bootstrap
