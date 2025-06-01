@@ -5,7 +5,7 @@ init: install-brew
 	@brew bundle --file $(HOME)/dotfiles/homebrew/Brewfile
 	@stow .
 	@echo "To apply shell changes, run:"
-	@echo "source $($HOME)/.config/zsh/.zshrc"
+	@echo "source $(HOME)/.config/zsh/.zshrc"
 
 # Generate configs and restow
 update: merge-config stow

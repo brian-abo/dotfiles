@@ -30,6 +30,7 @@ jobs:
       - name: Run full bootstrap
         working-directory: /Users/runner/dotfiles
         run: |
+          set -x
           make init
           source $XDG_CONFIG_HOME/zsh/.zshrc
           ls -al $XDG_CONFIG_HOME
