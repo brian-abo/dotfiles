@@ -14,7 +14,9 @@ jobs:
           echo "HOME is: $HOME"
           echo "PWD is: $PWD"
       - name: Run full bootstrap
-        run: make init
+        run: |
+          ls -al
+          make init
       - name: Validate core symlinks
         run: |
           test -L "$HOME/.zshrc" || (echo "Missing .zshrc symlink" && exit 1)
