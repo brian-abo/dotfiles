@@ -1,7 +1,10 @@
 font-family = "JetBrains Mono"
 theme = catppuccin-mocha
-background-opacity = 0.8
+background-opacity = 0.7
 background-blur = true
+background-blur-radius = 20 
 font-size = 19
-
+window-decoration = true
 keybind = global:alt+q=toggle_quick_terminal
+macos-option-as-alt = true
+mouse-hide-while-typing = true

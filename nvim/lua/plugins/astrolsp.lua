@@ -7,6 +7,7 @@ return {
       codelens = true,
       inlay_hints = true,
       semantic_tokens = true,
+      signature_help = false,
     },
     formatting = {
       format_on_save = {
@@ -14,6 +15,9 @@ return {
         allow_filetypes = {
           "go",
           "lua",
+          "yaml",
+          "yml",
+          "md",
         },
       },
       timeout_ms = 1000,
@@ -89,6 +93,15 @@ return {
             usePlaceholders = true,
           },
         },
+      },
+      yamlls = {
+        filetypes = { "yaml", "yaml.docker-compose" },
+      },
+      marksman = {
+        filetypes = { "markdown", "markdown.mdx" },
+      },
+      bashls = {
+        filetypes = { "bash", "sh" },
       },
     },
   },

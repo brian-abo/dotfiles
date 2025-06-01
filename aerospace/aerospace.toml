@@ -168,12 +168,12 @@ run = 'layout floating'
 
     alt-g = 'exec-and-forget open -a /Applications/Ghostty.app'
     # alt-s = 'exec-and-forget open -a /Applications/Safari.app'
-    alt-s = '''exec-and-forget osascript -e '
-        tell application "Safari"
-        make new document at end of documents
-        activate
-    end tell'
-    '''
+    # alt-s = '''exec-and-forget osascript -e '
+    #     tell application "Safari"
+    #     make new document at end of documents
+    #     activate
+    # end tell'
+    # '''
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes

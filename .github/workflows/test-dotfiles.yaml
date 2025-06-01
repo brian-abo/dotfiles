@@ -1,0 +1,20 @@
+---
+name: Test Dotfiles
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  test-dotfiles:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run full bootstrap
+        run: make init
+      - name: Validate core symlinks
+        run: |
+          test -L "$HOME/.zshrc" || (echo "Missing .zshrc symlink" && exit 1)
+          test -L "$HOME/.config/nvim/init.lua" || (echo "Missing Neovim config" && exit 1)
+      - name: Show final structure
+        run: |-
+          tree -L 2 "$HOME/.config" || true
