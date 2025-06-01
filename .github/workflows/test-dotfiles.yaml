@@ -23,13 +23,12 @@ jobs:
           echo "Current shell: $0"
           echo "Zsh test: [[ -o interactive ]] && echo interactive || echo non-interactive"
       - uses: actions/checkout@v4
-      - name: Show environment
+      - name: Prepare environment
         run: |
           echo "SHELL = $SHELL"
           echo "ZDOTDIR = $ZDOTDIR"
           echo "XDG_CONFIG_HOME = $XDG_CONFIG_HOME"
           cp -r "$GITHUB_WORKSPACE" "$HOME"
-          # mv /Users/runner/work/dotfiles/dotfiles $HOME
           cd $HOME/dotfiles
       - name: Run full bootstrap
         working-directory: /Users/runner/dotfiles
@@ -38,10 +37,10 @@ jobs:
           source $XDG_CONFIG_HOME/zsh/.zshrc
           set -x
           ls -al $XDG_CONFIG_HOME
-      # - name: Validate core symlinks
-      #   run: |
-      #     test -L "$HOME/.zshrc" || (echo "Missing .zshrc symlink" && exit 1)
-      #     test -L "$HOME/.config/nvim/init.lua" || (echo "Missing Neovim config" && exit 1)
-      # - name: Show final structure
-      #   run: |-
-      #     tree -L 2 "$HOME/.config" || true
+      - name: Validate core symlinks
+        run: |
+          test -L $XDG_CONFIG_HOME/zsh/.zshrc || (echo "Missing .zshrc symlink" && exit 1)
+          test -L $XDG_CONFIG_HOME/.config/nvim/init.lua || (echo "Missing Neovim config" && exit 1)
+      - name: Show final structure
+        run: |-
+          tree -L 2 $XDG_CONFIG_HOME || true
