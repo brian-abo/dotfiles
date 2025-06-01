@@ -28,15 +28,15 @@ jobs:
           echo "SHELL = $SHELL"
           echo "ZDOTDIR = $ZDOTDIR"
           echo "XDG_CONFIG_HOME = $XDG_CONFIG_HOME"
-          mv "$GITHUB_WORKSPACE" "$HOME"
+          cp -r "$GITHUB_WORKSPACE" "$HOME"
           # mv /Users/runner/work/dotfiles/dotfiles $HOME
           cd $HOME/dotfiles
       - name: Run full bootstrap
         working-directory: /Users/runner/dotfiles
         run: |
-          set -x
           make init
           source $XDG_CONFIG_HOME/zsh/.zshrc
+          set -x
           ls -al $XDG_CONFIG_HOME
       # - name: Validate core symlinks
       #   run: |
