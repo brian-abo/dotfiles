@@ -20,7 +20,7 @@ jobs:
           echo "HOME is: $HOME"
           echo "PWD is: $PWD"
       - name: Run full bootstrap
-        working-directory: ${{ env.HOME }}/dotfiles
+        working-directory: $HOME/dotfiles
         run: make init
       - name: Validate core symlinks
         run: |
