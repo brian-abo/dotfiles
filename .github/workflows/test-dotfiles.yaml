@@ -8,6 +8,10 @@ jobs:
   test-dotfiles:
     runs-on: macos-latest
     steps:
+      - name: Simulate real dotfiles install location
+        run: |
+          mv "$GITHUB_WORKSPACE" "$HOME/dotfiles"
+          cd "$HOME/dotfiles"
       - uses: actions/checkout@v4
       - name: Run full bootstrap
         run: make init
