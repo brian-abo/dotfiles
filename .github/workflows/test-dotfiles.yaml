@@ -39,6 +39,7 @@ jobs:
           ls -al $XDG_CONFIG_HOME
       - name: Validate core symlinks
         run: |
+          ls -al "$XDG_CONFIG_HOME/zsh"
           test -L "$XDG_CONFIG_HOME/zsh/.zshrc" || (echo "Missing .zshrc symlink" && exit 1)
           test -L "$XDG_CONFIG_HOME/.config/nvim/init.lua" || (echo "Missing Neovim config" && exit 1)
       - name: Show final structure
