@@ -7,10 +7,16 @@ on:
 jobs:
   test-dotfiles:
     runs-on: macos-latest
+    defaults:
+      run:
+        shell: zsh
     steps:
       - uses: actions/checkout@v4
       - name: Show environment
         run: |
+          echo "SHELL = $SHELL"
+          echo "ZDOTDIR = $ZDOTDIR"
+          echo "XDG_CONFIG_HOME = $XDG_CONFIG_HOME"
           mv /Users/runner/work/dotfiles/dotfiles $HOME
           cd $HOME/dotfiles
       - name: Run full bootstrap
