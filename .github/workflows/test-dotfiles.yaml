@@ -13,7 +13,11 @@ jobs:
         run: |
           echo "HOME is: $HOME"
           echo "PWD is: $PWD"
+          mv /Users/runner/work/dotfiles/dotfiles $HOME
+          cd $HOME/dotfiles
+          ls -al
       - name: Run full bootstrap
+        working-directory: $HOME/dotfiles
         run: |
           ls /Users/runner/dotfiles
           make init
