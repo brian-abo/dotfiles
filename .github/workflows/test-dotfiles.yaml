@@ -15,7 +15,7 @@ jobs:
           echo "PWD is: $PWD"
       - name: Run full bootstrap
         run: |
-          ls -al
+          ls /Users/runner/dotfiles
           make init
       - name: Validate core symlinks
         run: |
