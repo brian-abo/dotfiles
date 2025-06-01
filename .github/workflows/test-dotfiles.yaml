@@ -10,10 +10,13 @@ jobs:
     defaults:
       run:
         shell: zsh {0}
-    env:
-      ZDOTDIR: ${HOME}/.config/zsh
-      XDG_CONFIG_HOME: ${HOME}/.config
     steps:
+      - name: Set config paths
+        run: |
+          export ZDOTDIR="$HOME/.config/zsh"
+          export XDG_CONFIG_HOME="$HOME/.config"
+          echo "ZDOTDIR=$ZDOTDIR" >> $GITHUB_ENV
+          echo "XDG_CONFIG_HOME=$XDG_CONFIG_HOME" >> $GITHUB_ENV
       - name: Confirm Zsh
         run: |
           echo "Zsh version: $(zsh --version)"
