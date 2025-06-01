@@ -15,8 +15,12 @@ jobs:
         run: |
           mv "$GITHUB_WORKSPACE/dotfiles" "$HOME"
           cd "$HOME/dotfiles"
+      - name: Show environment
+        run: |
+          echo "HOME is: $HOME"
+          echo "PWD is: $PWD"
       - name: Run full bootstrap
-        working-directory: $HOME/dotfiles
+        working-directory: ${{ env.HOME }}/dotfiles
         run: make init
       - name: Validate core symlinks
         run: |
