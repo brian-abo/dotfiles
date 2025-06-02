@@ -8,6 +8,9 @@ make init
 make update
 git update-index --assume-unchanged sesh/sesh.toml
 ```
+Before opening Neovim run this command:
+
+`nvm install --lts`
 
 Open Neovim once to let everything install then run the following command
 
