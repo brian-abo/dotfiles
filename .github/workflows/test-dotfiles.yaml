@@ -38,7 +38,7 @@ jobs:
           set -x
           ls -al $XDG_CONFIG_HOME
       - name: Validate core symlinks
-        run: |
+        run: |-
           # Validate symlinked directories
           test -L "$XDG_CONFIG_HOME/zsh" || { echo "❌ Missing symlink: .config/zsh"; exit 1; }
           test -L "$XDG_CONFIG_HOME/nvim" || { echo "❌ Missing symlink: .config/nvim"; exit 1; }
@@ -49,6 +49,3 @@ jobs:
           test -e "$XDG_CONFIG_HOME/nvim/init.lua"    || { echo "❌ Missing init.lua in .config/nvim"; exit 1; }
           test -e "$XDG_CONFIG_HOME/tmux/tmux.conf"    || { echo "❌ Missing init.lua in .config/tmux/"; exit 1; }
           echo "✅ All required symlinks and config files are present."
-      - name: Show final structure
-        run: |-
-          tree -L 2 $XDG_CONFIG_HOME || true
